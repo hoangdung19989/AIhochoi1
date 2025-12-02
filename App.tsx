@@ -1,4 +1,5 @@
 
+
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import type { Subject, Module, Course, Grade, ChatMessage, PhetSimulation, LabCategory, TestSubject, TestGrade, SelfPracticeSubject, PracticeLesson, Quiz, MockExamSubject, LectureSubject, TestType } from './types';
 import AITutorView from './components/AITutorView';
@@ -26,8 +27,10 @@ import MockExamGradeSelectionView from './components/MockExamGradeSelectionView'
 import MockExamView from './components/MockExamView';
 import AboutModal from './components/AboutModal';
 import LoginView from './components/LoginView'; 
-import PersonalizedDashboard from './components/PersonalizedDashboard'; // Import Dashboard mới
+import UpdatePasswordView from './components/UpdatePasswordView'; // Import the new view
+import PersonalizedDashboard from './components/PersonalizedDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext'; 
+import { supabase } from './services/supabaseClient'; // Import supabase client
 import { SUBJECTS, GRADES_BY_SUBJECT, ALL_COURSES, PHET_SIMULATIONS, LAB_CATEGORIES, TEST_SUBJECTS, MOCK_EXAM_SUBJECTS, TEST_GRADES, MOCK_EXAM_GRADES, PRACTICE_LESSONS_DATA, TEST_TYPES } from './constants';
 import { getGenericTutorResponse, generatePracticeExercises } from './services/geminiService';
 import { RobotIcon, PaperAirplaneIcon, XMarkIcon } from './components/icons';
@@ -36,7 +39,8 @@ import { RobotIcon, PaperAirplaneIcon, XMarkIcon } from './components/icons';
 export type View = 
   | 'home'
   | 'login' 
-  | 'personalized-dashboard' // New View
+  | 'update-password' // New view for password reset
+  | 'personalized-dashboard' 
   | 'self-study' 
   | 'self-practice-subjects'
   | 'self-practice-grades'
@@ -189,8 +193,8 @@ const AIChatPopup: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
 
 // --- Main App Component ---
 const AppContent: React.FC = () => {
-  const { user } = useAuth(); // Access user state
-  const [currentView, setCurrentView] = useState<View>('home');
+  const { user, isLoading } = useAuth();
+  const [currentView, setCurrentView] = useState<View>('login');
   const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
   const [selectedLectureSubject, setSelectedLectureSubject] = useState<LectureSubject | null>(null);
   const [selectedGrade, setSelectedGrade] = useState<Grade | null>(null);
@@ -214,6 +218,25 @@ const AppContent: React.FC = () => {
 
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
+
+  // Redirect if user is already logged in or handle password recovery
+  useEffect(() => {
+    if (!isLoading) {
+      if (user && (currentView === 'login' || currentView === 'update-password')) {
+        setCurrentView('home');
+      }
+    }
+     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setCurrentView('update-password');
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [user, isLoading, currentView]);
+
 
   // --- Navigation Handlers ---
 
@@ -249,7 +272,6 @@ const AppContent: React.FC = () => {
     setCurrentView('lecture-grades');
   };
   const handleSelectGrade = (grade: Grade) => {
-    // PROTECTED ROUTE
     if (!user) {
         alert("Bạn cần đăng nhập để xem video bài giảng.");
         setCurrentView('login');
@@ -278,7 +300,6 @@ const AppContent: React.FC = () => {
     setCurrentView('laboratory-list');
   };
   const handleSelectSimulation = (simulation: PhetSimulation) => {
-    // PROTECTED ROUTE
     if (!user) {
         alert("Bạn cần đăng nhập để sử dụng phòng thí nghiệm.");
         setCurrentView('login');
@@ -302,7 +323,6 @@ const AppContent: React.FC = () => {
   const handleBackToTestGrades = () => setCurrentView('test-grades');
 
   const handleSelectTestType = (type: TestType) => {
-      // PROTECTED ROUTE
       if (!user) {
           alert("Bạn cần đăng nhập để bắt đầu làm bài kiểm tra và lưu kết quả.");
           setCurrentView('login');
@@ -321,7 +341,6 @@ const AppContent: React.FC = () => {
   };
   const handleBackToMockExamSubjects = () => setCurrentView('mock-exam-subjects');
   const handleSelectMockExamGrade = (grade: TestGrade) => {
-    // PROTECTED ROUTE
     if (!user) {
         alert("Bạn cần đăng nhập để tham gia thi thử.");
         setCurrentView('login');
@@ -372,7 +391,6 @@ const AppContent: React.FC = () => {
 
 
   const handleSelectPracticeLesson = useCallback((lesson: PracticeLesson) => {
-      // PROTECTED ROUTE
       if (!user) {
           alert("Bạn cần đăng nhập để vào phòng luyện tập.");
           setCurrentView('login');
@@ -401,7 +419,9 @@ const AppContent: React.FC = () => {
       case 'home':
         return <HomePage setCurrentView={setCurrentView} />;
       case 'login':
-        return <LoginView onBackToHome={() => setCurrentView('home')} onLoginSuccess={() => setCurrentView('home')} />;
+        return <LoginView onLoginSuccess={() => setCurrentView('home')} />;
+      case 'update-password':
+        return <UpdatePasswordView onPasswordUpdated={() => setCurrentView('login')} />;
       case 'personalized-dashboard':
         return <PersonalizedDashboard onStartLesson={() => setCurrentView('self-study')} />;
       case 'self-study':
@@ -412,7 +432,7 @@ const AppContent: React.FC = () => {
         if (selectedSubject) {
           return <AITutorView subject={selectedSubject} onBack={handleBackToSubjectDashboard} />;
         }
-        // Fallthrough
+        break;
       case 'lecture-subjects':
         return <LectureSubjectSelection moduleTitle={selectedModule?.title || 'Bài giảng'} onBack={handleBackToDashboard} onSelectSubject={handleSelectLectureSubject} />;
       case 'lecture-grades':
@@ -420,36 +440,37 @@ const AppContent: React.FC = () => {
             const gradesForSubject = GRADES_BY_SUBJECT[selectedLectureSubject.id] || [];
             return <GradeSelectionView subject={selectedLectureSubject} grades={gradesForSubject} onSelectGrade={handleSelectGrade} onBackToSubjects={handleBackToLectureSubjects} onBackToSelfStudy={handleBackToDashboard} />;
         }
-        // Fallthrough
+        break;
       case 'lecture-video':
         if (selectedCourse) {
           return <LectureView course={selectedCourse} onExit={handleExitLecture} />;
         }
-        // Fallthrough
+        break;
       case 'laboratory-categories':
         return <LaboratoryParentCategorySelection categories={LAB_CATEGORIES} onSelectCategory={handleSelectLabCategory} onBack={handleBackToDashboard} />;
       case 'laboratory-subcategories':
         if (selectedLabCategory) {
           return <LaboratorySubCategorySelection parentCategory={selectedLabCategory} onSelectSubcategory={handleSelectLabSubCategory} onBack={handleBackToLabCategories} />;
         }
-        // Fallthrough
+        break;
       case 'laboratory-list':
         if (selectedLabCategory && selectedLabSubCategory) {
           const simulations = PHET_SIMULATIONS[selectedLabSubCategory.id] || [];
           return <SimulationListView parentCategory={selectedLabCategory} subcategory={selectedLabSubCategory} simulations={simulations} onSelectSimulation={handleSelectSimulation} onBack={handleBackToLabCategories} />;
         }
-        // Fallthrough
+        break;
       case 'laboratory-simulation':
         if (selectedSimulation && selectedLabCategory) {
           return <SimulationView simulation={selectedSimulation} subjectName={selectedLabCategory.name} onBack={handleBackToSimulationList} />;
         }
-        // Fallthrough
+        break;
       case 'test-subjects':
         return <TestSubjectSelectionView moduleTitle={selectedModule?.title || "Kiểm tra"} subjects={TEST_SUBJECTS} onSelectSubject={handleSelectTestSubject} onBack={handleBackToDashboard}/>
       case 'test-grades':
         if (selectedTestSubject) {
             return <TestGradeSelectionView subject={selectedTestSubject} grades={TEST_GRADES} onSelectGrade={handleSelectTestGrade} onBackToSubjects={handleBackToTestSubjects} onBackToSelfStudy={handleBackToDashboard}/>
         }
+        break;
       case 'test-types':
         if (selectedTestSubject && selectedTestGrade) {
             return <TestTypeSelectionView 
@@ -462,24 +483,24 @@ const AppContent: React.FC = () => {
                 onBackToSelfStudy={handleBackToDashboard}
             />
         }
-        // Fallthrough
+        break;
       case 'quiz-view':
           if (selectedTestSubject && selectedTestGrade && selectedTestType) {
               return <QuizView subject={selectedTestSubject} grade={selectedTestGrade} testType={selectedTestType} onBack={handleBackToTestTypes} onBackToSubjects={handleBackToTestSubjects}/>
           }
-        // Fallthrough
+          break;
       case 'mock-exam-subjects':
         return <MockExamSubjectSelectionView moduleTitle={selectedModule?.title || "Thi thử"} subjects={MOCK_EXAM_SUBJECTS} onSelectSubject={handleSelectMockExamSubject} onBack={handleBackToDashboard}/>
       case 'mock-exam-grades':
         if (selectedMockExamSubject) {
             return <MockExamGradeSelectionView subject={selectedMockExamSubject} grades={MOCK_EXAM_GRADES} onSelectGrade={handleSelectMockExamGrade} onBackToSubjects={handleBackToMockExamSubjects} onBackToSelfStudy={handleBackToDashboard}/>
         }
-        // Fallthrough
+        break;
       case 'mock-exam-view':
           if (selectedMockExamSubject && selectedMockExamGrade) {
               return <MockExamView subject={selectedMockExamSubject} grade={selectedMockExamGrade} onBack={handleBackToMockExamGrades} onBackToSubjects={handleBackToMockExamSubjects}/>
           }
-        // Fallthrough
+          break;
       case 'self-practice-subjects':
         return <SelfPracticeSubjectSelection onBack={handleBackToDashboard} onSelectSubject={handleSelectSelfPracticeSubject} />;
       
@@ -493,7 +514,7 @@ const AppContent: React.FC = () => {
                 onBackToSelfStudy={handleBackToDashboard}
             />
         }
-        // Fallthrough
+        break;
 
       case 'self-practice-lessons':
         const practiceLessonKey = `sp-${selectedSelfPracticeSubject?.id.replace('sp-', '')}-grade-${selectedSelfPracticeGrade?.id.replace('grade-', '')}`;
@@ -511,8 +532,7 @@ const AppContent: React.FC = () => {
             />
           );
         }
-        // Fallback
-        return <ModuleDashboard onSelectModule={handleSelectModule} />;
+        break;
     
     case 'practice-view':
         if (selectedSelfPracticeSubject && selectedSelfPracticeGrade && selectedPracticeLesson) {
@@ -531,9 +551,10 @@ const AppContent: React.FC = () => {
                 />
             );
         }
-        // Fallthrough
+        break;
     }
-    return <HomePage setCurrentView={setCurrentView} />;
+    // Fallback to login if no view matches or data is missing
+    return <LoginView onLoginSuccess={() => setCurrentView('home')} />;
   };
 
   return (

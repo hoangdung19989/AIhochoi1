@@ -84,7 +84,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, onOpenAb
         {user && (
             <NavLink icon={MapIcon} label="Lộ trình của tôi" isActive={currentView === 'personalized-dashboard'} isExpanded={isExpanded} onClick={() => setCurrentView('personalized-dashboard')} />
         )}
-        <NavLink icon={LightBulbIcon} label="AI Convo" isActive={isAiConvoActive} isExpanded={isExpanded} onClick={() => setCurrentView('ai-subjects')} />
+        <NavLink icon={LightBulbIcon} label="AI OnLuyen" isActive={isAiConvoActive} isExpanded={isExpanded} onClick={() => setCurrentView('ai-subjects')} />
       </nav>
 
         <div className="mt-auto">
@@ -103,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, setCurrentView, onOpenAb
                              <button 
                                 onClick={() => {
                                     signOut();
-                                    setCurrentView('home');
+                                    setCurrentView('login');
                                 }}
                                 className="mt-2 w-full text-xs text-center py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-300 transition-colors"
                              >

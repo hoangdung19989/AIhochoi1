@@ -16,11 +16,7 @@ Dưới đây là hướng dẫn đầy đủ để bạn có thể chạy dự 
 
 ---
 
-## 2. Lấy API Key (Google Gemini & Supabase)
-
-Dự án này cần 2 dịch vụ để hoạt động:
-1.  **Google Gemini API**: Để tạo nội dung học tập thông minh.
-2.  **Supabase**: Để quản lý tài khoản người dùng và đăng nhập.
+## 2. Lấy API Key & Cấu hình Dịch vụ
 
 ### A. Lấy Google Gemini API Key
 1.  Truy cập [Google AI Studio](https://aistudio.google.com/app/apikey).
@@ -29,61 +25,51 @@ Dự án này cần 2 dịch vụ để hoạt động:
 
 ### B. Cấu hình Supabase (Cơ sở dữ liệu & Đăng nhập)
 1.  Truy cập [supabase.com](https://supabase.com) và tạo một Project mới.
-2.  **Tắt xác thực Email (Khuyên dùng để test nhanh):**
-    *   Vào Dashboard -> **Authentication** -> **Providers** -> **Email**.
-    *   Tắt (Disable) mục **"Confirm email"**.
-    *   Bấm Save.
-3.  **Lấy Key kết nối:**
+2.  **Lấy Key kết nối:**
     *   Vào **Settings** (Bánh răng) -> **API**.
     *   Copy **Project URL**.
     *   Copy **anon public** Key.
-4.  **QUAN TRỌNG: Cập nhật Cấu trúc Bảng (Columns)**
-    *   Để tính năng Lộ trình học cá nhân hóa hoạt động chính xác (phân loại theo Lớp và Loại bài thi), bạn cần thêm các cột sau vào bảng.
+3.  **Bật Đăng ký qua Email:**
+    *   Vào **Authentication** -> **Providers** -> **Email**.
+    *   Bật (Enable) nhà cung cấp này.
+    *   **Bỏ chọn** mục **"Confirm email"** (Khuyên dùng để test nhanh, không cần xác thực).
+4.  **Cấu hình URL Khôi phục Mật khẩu (QUAN TRỌNG):**
+    *   Vẫn trong mục **Authentication**, vào **URL Configuration**.
+    *   Trong ô **Site URL**, hãy điền địa chỉ trang web của bạn (VD: `http://localhost:5173` khi chạy local, hoặc `https://your-app-name.vercel.app` khi đã deploy).
+    *   Bấm **Save**.
+5.  **Cập nhật Cấu trúc Bảng (Columns):**
     *   Vào **Table Editor**:
-    *   **Bảng `exam_results`**:
-        *   Thêm cột: `exam_type` (Kiểu: `text`). Dùng để lưu 'quiz', 'mock', hoặc 'practice'.
-    *   **Bảng `question_attempts`**:
-        *   Thêm cột: `grade` (Kiểu: `text`). Dùng để lưu 'Lớp 6', 'Lớp 9', v.v.
-        *   Thêm cột: `exam_type` (Kiểu: `text`).
-
-5.  **Cấu hình Bảo mật Dữ liệu (RLS Policies)**
+    *   **Bảng `exam_results`**: Thêm cột `exam_type` (Kiểu: `text`).
+    *   **Bảng `question_attempts`**: Thêm cột `grade` (Kiểu: `text`) và `exam_type` (Kiểu: `text`).
+6.  **Cấu hình Bảo mật Dữ liệu (RLS Policies):**
     *   Vào **Authentication** -> **Policies**.
-    *   Chọn bảng (ví dụ `exam_results`).
-    *   Bấm **"Create policy"** -> Chọn **"From a template"**.
-        *   **GHI (INSERT):** Chọn mẫu **"Enable INSERT for authenticated users only"**. Save.
-        *   **ĐỌC (SELECT):** Chọn mẫu **"Enable users to view their own data only"**. Save.
-    *   Làm tương tự cho cả 3 bảng: `exam_results`, `question_attempts`, `user_progress`.
+    *   Với mỗi bảng (`exam_results`, `question_attempts`, `user_progress`), hãy tạo 2 policy sau:
+        *   **Policy 1 (GHI):** Bấm "Create policy" -> "From a template" -> Chọn mẫu **"Enable INSERT for authenticated users only"**. Save.
+        *   **Policy 2 (ĐỌC):** Bấm "Create policy" -> "From a template" -> Chọn mẫu **"Enable users to view their own data only"**. Save.
 
 ---
 
 ## 3. Chạy dự án trên máy tính (Local Development)
 
-### Bước 1: Tải mã nguồn về
-
-Mở Terminal và clone kho mã nguồn:
+### Bước 1: Tải mã nguồn & Cài đặt
 
 ```bash
 git clone <URL_KHO_LUU_TRU_CUA_BAN>
 cd <TEN_THU_MUC_DU_AN>
-```
-
-### Bước 2: Cài đặt thư viện
-
-```bash
 npm install
 ```
 
-### Bước 3: Cấu hình biến môi trường (.env)
+### Bước 2: Cấu hình biến môi trường (.env)
 
-Tạo file `.env` trong thư mục gốc và điền thông tin:
+Tạo file `.env` và điền thông tin:
 
 ```env
-VITE_API_KEY=AIzaSy... (Key Google của bạn)
+VITE_API_KEY=AIzaSy...
 VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5c... (Key Supabase anon)
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5c...
 ```
 
-### Bước 4: Khởi động
+### Bước 3: Khởi động
 
 ```bash
 npm run dev
@@ -101,14 +87,14 @@ Truy cập `http://localhost:5173`.
 1.  Vào [vercel.com](https://vercel.com) -> **Add New...** -> **Project**.
 2.  Import kho lưu trữ GitHub của bạn.
 
-### Bước 3: Nhập Biến môi trường (Environment Variables)
-Đây là bước quan trọng nhất. Tại màn hình "Configure Project", mục **Environment Variables**, hãy thêm đủ 3 biến sau:
+### Bước 3: Nhập Biến môi trường
+Tại mục **Environment Variables**, thêm 3 biến:
 
 | Name | Value |
 | :--- | :--- |
-| `VITE_API_KEY` | Key lấy từ Google AI Studio |
-| `VITE_SUPABASE_URL` | URL lấy từ Supabase Settings |
-| `VITE_SUPABASE_ANON_KEY` | Anon Key lấy từ Supabase Settings |
+| `VITE_API_KEY` | Key Google AI Studio |
+| `VITE_SUPABASE_URL` | URL Supabase |
+| `VITE_SUPABASE_ANON_KEY` | Anon Key Supabase |
 
 ### Bước 4: Deploy
 Bấm **Deploy**. Sau khoảng 1 phút, web của bạn sẽ chạy online!
@@ -118,29 +104,16 @@ Bấm **Deploy**. Sau khoảng 1 phút, web của bạn sẽ chạy online!
 ## 5. Cấu hình Tên miền riêng (Custom Domain)
 
 1.  Trên Vercel, vào **Settings** -> **Domains**.
-2.  Nhập tên miền bạn đã mua (ví dụ: `onluyen.vn`) và bấm **Add**.
-3.  Vercel sẽ cung cấp thông số DNS (A Record và CNAME).
-4.  Đăng nhập vào trang quản lý tên miền (nơi bạn mua domain) và thêm các bản ghi DNS này vào.
-5.  Chờ vài phút để hệ thống cập nhật và cấp chứng chỉ bảo mật (SSL).
+2.  Nhập tên miền của bạn và bấm **Add**.
+3.  Vercel sẽ cung cấp thông số DNS (A Record, CNAME).
+4.  Đăng nhập vào trang quản lý tên miền và thêm các bản ghi DNS này vào.
+
 ---
 
 ## 6. Xử lý lỗi thường gặp (Troubleshooting)
 
-### Lỗi: "Email signups are disabled"
-Lỗi này xảy ra khi tính năng đăng ký bằng email chưa được bật trong dự án Supabase của bạn.
+### Lỗi: "Error fetching user data" hoặc "Column does not exist"
+Lỗi này xảy ra khi cơ sở dữ liệu Supabase thiếu các cột mới (`grade`, `exam_type`) hoặc chưa cấp quyền ĐỌC (SELECT) cho người dùng.
 
 **Cách khắc phục:**
-1.  Đăng nhập vào [Supabase](https://supabase.com).
-2.  Vào dự án của bạn, ở thanh menu bên trái, chọn **Authentication** (biểu tượng hình người).
-3.  Trong mục **Configuration**, chọn **Providers**.
-4.  Tìm nhà cung cấp **Email** và đảm bảo công tắc (toggle) đang ở trạng thái **Bật (Enabled)**. Nếu đang tắt, hãy bấm để bật nó lên.
-5.  Sau khi bật, trang web của bạn sẽ cho phép đăng ký ngay lập tức mà không cần deploy lại.
-
-### Lỗi: "Error fetching user data: [object Object]" hoặc "Column does not exist"
-Lỗi này thường xảy ra khi cơ sở dữ liệu Supabase của bạn thiếu các cột mới được thêm vào gần đây (`grade`, `exam_type`).
-
-**Cách khắc phục:**
-Vào Supabase -> **Table Editor** và thêm thủ công các cột sau (nếu chưa có):
-*   **Bảng `exam_results`**: thêm cột `exam_type` (Kiểu: `text`).
-*   **Bảng `question_attempts`**: thêm cột `grade` (Kiểu: `text`) và cột `exam_type` (Kiểu: `text`).
-*   Hãy đảm bảo bạn đã tạo Policy (RLS) cho phép "SELECT" (Đọc) cho người dùng đã đăng nhập (xem mục 2.B ở trên).
+*   Kiểm tra lại **Bước 2.5 và 2.6** ở trên để đảm bảo bạn đã thêm đủ cột và cấu hình RLS Policy chính xác.
