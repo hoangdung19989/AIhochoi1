@@ -35,7 +35,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
           redirectTo: window.location.origin, // Supabase will append the recovery token
         });
         if (error) throw error;
-        setMessage('Đã gửi hướng dẫn khôi phục mật khẩu. Vui lòng kiểm tra email của bạn.');
+        setMessage('Đã gửi email khôi phục. Vui lòng kiểm tra hộp thư (cả mục Spam) và bấm vào link để đặt lại mật khẩu.');
       }
     } catch (err: any) {
       if (err.message.includes("Email signups are disabled")) {
@@ -129,7 +129,7 @@ const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
             disabled={loading}
             className="w-full py-3 bg-brand-blue hover:bg-brand-blue-dark text-white font-bold rounded-lg transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Đang xử lý...' : (mode === 'signup' ? 'Đăng ký' : mode === 'login' ? 'Đăng nhập' : 'Gửi hướng dẫn')}
+            {loading ? 'Đang xử lý...' : (mode === 'signup' ? 'Đăng ký' : mode === 'login' ? 'Đăng nhập' : 'Gửi link khôi phục')}
           </button>
         </form>
 

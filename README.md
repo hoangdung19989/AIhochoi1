@@ -43,9 +43,22 @@ Dưới đây là hướng dẫn đầy đủ để bạn có thể chạy dự 
     *   **Bảng `question_attempts`**: Thêm cột `grade` (Kiểu: `text`) và `exam_type` (Kiểu: `text`).
 6.  **Cấu hình Bảo mật Dữ liệu (RLS Policies):**
     *   Vào **Authentication** -> **Policies**.
-    *   Với mỗi bảng (`exam_results`, `question_attempts`, `user_progress`), hãy tạo 2 policy sau:
+    *   **Đối với bảng `profiles` (Lưu ý khác biệt):**
+        *   **Quyền ĐỌC (SELECT):** 
+            *   Bấm "Create policy" -> "From a template".
+            *   Chọn mẫu **"Enable users to view their own data only"**.
+            *   **QUAN TRỌNG:** Ở ô `USING expression`, hãy chắc chắn nó là `auth.uid() = id` (vì bảng này dùng cột `id` làm khóa chính, không phải `user_id`).
+            *   Bấm Save.
+        *   **Quyền SỬA (UPDATE):**
+            *   Bấm "Create policy". (Không chọn mẫu table joins).
+            *   Đặt tên: "Users can update own profile".
+            *   Policy Command: **UPDATE**. Target roles: **authenticated**.
+            *   Ở ô `USING expression`, điền: `auth.uid() = id`.
+            *   Bấm Save.
+    *   **Đối với các bảng khác (`exam_results`, `question_attempts`, `user_progress`):**
         *   **Policy 1 (GHI):** Bấm "Create policy" -> "From a template" -> Chọn mẫu **"Enable INSERT for authenticated users only"**. Save.
-        *   **Policy 2 (ĐỌC):** Bấm "Create policy" -> "From a template" -> Chọn mẫu **"Enable users to view their own data only"**. Save.
+        *   **Policy 2 (ĐỌC):** Bấm "Create policy" -> "From a template" -> Chọn mẫu **"Enable users to view their own data only"**. 
+        *   **Lưu ý:** Với các bảng này, điều kiện mặc định `auth.uid() = user_id` là **ĐÚNG**, không cần sửa.
 
 ---
 
@@ -111,6 +124,35 @@ Bấm **Deploy**. Sau khoảng 1 phút, web của bạn sẽ chạy online!
 ---
 
 ## 6. Xử lý lỗi thường gặp (Troubleshooting)
+
+### Lỗi: "Email signups are disabled"
+Vào Supabase -> Authentication -> Providers -> Email -> Bật "Enable Email provider".
+
+### Lỗi: Tài khoản đăng ký xong nhưng bảng `profiles` trống rỗng
+Điều này là bình thường nếu bạn chưa cài đặt Trigger. Để tự động đồng bộ user mới sang bảng profiles, hãy chạy lệnh SQL sau trong **SQL Editor** của Supabase:
+
+```sql
+-- 1. Thêm cột email vào bảng profiles (nếu chưa có)
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS email text;
+
+-- 2. Tạo hàm xử lý (Copy email và thông tin sang profiles)
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  insert into public.profiles (id, email, full_name, avatar_url)
+  values (new.id, new.email, new.raw_user_meta_data ->> 'full_name', new.raw_user_meta_data ->> 'avatar_url');
+  return new;
+end;
+$$;
+
+-- 3. Kích hoạt Trigger
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
+```
 
 ### Lỗi: "Error fetching user data" hoặc "Column does not exist"
 Lỗi này xảy ra khi cơ sở dữ liệu Supabase thiếu các cột mới (`grade`, `exam_type`) hoặc chưa cấp quyền ĐỌC (SELECT) cho người dùng.

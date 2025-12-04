@@ -1,5 +1,4 @@
 
-
 import type { Subject, Module, Course, Grade, PhetSimulation, LabCategory, TestSubject, TestGrade, SelfPracticeSubject, PracticeChapter, MockExamSubject, LectureSubject, TestType } from './types';
 import { 
     BookOpenIcon, 
@@ -224,94 +223,94 @@ const MATH_9_COURSE_DATA: Course = {
             id: 'm9-c1',
             title: 'Chương I. PHƯƠNG TRÌNH VÀ HỆ HAI PHƯƠNG TRÌNH BẬC NHẤT HAI ẨN.',
             lessons: [
-                { id: 'm9-c1-l1', title: 'Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn.', type: 'text' },
-                { id: 'm9-c1-l2', title: 'Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn.', type: 'text' },
-                { id: 'm9-c1-l3', title: 'Bài 3. Giải bài toán bằng cách lập hệ phương trình.', type: 'text' },
+                { id: 'm9-c1-l1', title: 'Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=5k94-f_O-h0' },
+                { id: 'm9-c1-l2', title: 'Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=gT8-X3A-h-4' },
+                { id: 'm9-c1-l3', title: 'Bài 3. Giải bài toán bằng cách lập hệ phương trình.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=0r-E2T62CzU' },
             ]
         },
         {
             id: 'm9-c2',
             title: 'Chương II. PHƯƠNG TRÌNH VÀ BẤT PHƯƠNG TRÌNH BẬC NHẤT MỘT ẨN.',
             lessons: [
-                { id: 'm9-c2-l4', title: 'Bài 4. Phương trình quy về phương trình bậc nhất một ẩn.', type: 'text' },
-                { id: 'm9-c2-l5', title: 'Bài 5. Bất đẳng thức và tính chất.', type: 'text' },
-                { id: 'm9-c2-l6', title: 'Bài 6. Bất phương trình bậc nhất một ẩn.', type: 'text' },
-                { id: 'm9-c2-l7', title: 'Bài tập cuối chương II.', type: 'text' },
+                { id: 'm9-c2-l4', title: 'Bài 4. Phương trình quy về phương trình bậc nhất một ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c2-l5', title: 'Bài 5. Bất đẳng thức và tính chất.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c2-l6', title: 'Bài 6. Bất phương trình bậc nhất một ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c2-l7', title: 'Bài tập cuối chương II.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c3',
             title: 'Chương III. CĂN BẬC HAI VÀ CĂN BẬC BA.',
             lessons: [
-                { id: 'm9-c3-l7', title: 'Bài 7. Căn bậc hai và căn thức bậc hai.', type: 'text' },
-                { id: 'm9-c3-l8', title: 'Bài 8. Khai căn bậc hai với phép nhân và phép chia.', type: 'text' },
-                { id: 'm9-c3-l9', title: 'Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai.', type: 'text' },
-                { id: 'm9-c3-l10', title: 'Bài 10. Căn bậc ba và căn thức bậc ba.', type: 'text' },
+                { id: 'm9-c3-l7', title: 'Bài 7. Căn bậc hai và căn thức bậc hai.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c3-l8', title: 'Bài 8. Khai căn bậc hai với phép nhân và phép chia.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c3-l9', title: 'Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c3-l10', title: 'Bài 10. Căn bậc ba và căn thức bậc ba.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c4',
             title: 'Chương IV. HỆ THỨC LƯỢNG TRONG TAM GIÁC VUÔNG.',
             lessons: [
-                { id: 'm9-c4-l11', title: 'Bài 11. Tỉ số lượng giác của góc nhọn.', type: 'text' },
-                { id: 'm9-c4-l12', title: 'Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng.', type: 'text' },
+                { id: 'm9-c4-l11', title: 'Bài 11. Tỉ số lượng giác của góc nhọn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c4-l12', title: 'Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c5',
             title: 'Chương V. ĐƯỜNG TRÒN.',
             lessons: [
-                { id: 'm9-c5-l13', title: 'Bài 13. Mở đầu về đường tròn.', type: 'text' },
-                { id: 'm9-c5-l14', title: 'Bài 14. Cung và dây của một đường tròn.', type: 'text' },
-                { id: 'm9-c5-l15', title: 'Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên.', type: 'text' },
-                { id: 'm9-c5-l16', title: 'Bài 16. Vị trí tương đối của đường thẳng và đường tròn.', type: 'text' },
-                { id: 'm9-c5-l17', title: 'Bài 17. Vị trí tương đối của hai đường tròn.', type: 'text' },
+                { id: 'm9-c5-l13', title: 'Bài 13. Mở đầu về đường tròn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c5-l14', title: 'Bài 14. Cung và dây của một đường tròn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c5-l15', title: 'Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c5-l16', title: 'Bài 16. Vị trí tương đối của đường thẳng và đường tròn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c5-l17', title: 'Bài 17. Vị trí tương đối của hai đường tròn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c6',
             title: 'Chương VI. HÀM SỐ y = ax2 (a khác 0). PHƯƠNG TRÌNH BẬC HAI MỘT ẨN.',
             lessons: [
-                { id: 'm9-c6-l18', title: 'Bài 18. Hàm số y = ax2 (a ≠ 0).', type: 'text' },
-                { id: 'm9-c6-l19', title: 'Bài 19. Phương trình bậc hai một ẩn.', type: 'text' },
-                { id: 'm9-c6-l20', title: 'Bài 20. Định lí Viète và ứng dụng.', type: 'text' },
-                { id: 'm9-c6-l21', title: 'Bài 21. Giải bài toán bằng cách lập phương trình.', type: 'text' },
+                { id: 'm9-c6-l18', title: 'Bài 18. Hàm số y = ax2 (a ≠ 0).', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c6-l19', title: 'Bài 19. Phương trình bậc hai một ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c6-l20', title: 'Bài 20. Định lí Viète và ứng dụng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c6-l21', title: 'Bài 21. Giải bài toán bằng cách lập phương trình.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c7',
             title: 'Chương VII. TẦN SỐ VÀ TẦN SỐ TƯƠNG ĐỐI.',
             lessons: [
-                { id: 'm9-c7-l22', title: 'Bài 22. Bảng tần số và biểu đồ tần số.', type: 'text' },
-                { id: 'm9-c7-l23', title: 'Bài 23. Bảng tần số tương đối và biểu đồ tần số tương đối.', type: 'text' },
-                { id: 'm9-c7-l24', title: 'Bài 24. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ.', type: 'text' },
-                { id: 'm9-c7-l25', title: 'Bài tập cuối chương VII.', type: 'text' },
+                { id: 'm9-c7-l22', title: 'Bài 22. Bảng tần số và biểu đồ tần số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c7-l23', title: 'Bài 23. Bảng tần số tương đối và biểu đồ tần số tương đối.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c7-l24', title: 'Bài 24. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c7-l25', title: 'Bài tập cuối chương VII.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c8',
             title: 'Chương VIII. XÁC SUẤT CỦA BIẾN CỐ TRONG MỘT SỐ MÔ HÌNH XÁC SUẤT ĐƠN GIẢN.',
             lessons: [
-                { id: 'm9-c8-l25', title: 'Bài 25. Phép thử ngẫu nhiên và không gian mẫu.', type: 'text' },
-                { id: 'm9-c8-l26', title: 'Bài 26. Xác suất của biến cố liên quan tới phép thử.', type: 'text' },
+                { id: 'm9-c8-l25', title: 'Bài 25. Phép thử ngẫu nhiên và không gian mẫu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c8-l26', title: 'Bài 26. Xác suất của biến cố liên quan tới phép thử.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c9',
             title: 'Chương IX. ĐƯỜNG TRÒN NGOẠI TIẾP VÀ ĐƯỜNG TRÒN NỘI TIẾP.',
             lessons: [
-                { id: 'm9-c9-l27', title: 'Bài 27. Góc nội tiếp.', type: 'text' },
-                { id: 'm9-c9-l28', title: 'Bài 28. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác.', type: 'text' },
-                { id: 'm9-c9-l29', title: 'Bài 29. Tứ giác nội tiếp.', type: 'text' },
-                { id: 'm9-c9-l30', title: 'Bài 30. Đa giác đều.', type: 'text' },
+                { id: 'm9-c9-l27', title: 'Bài 27. Góc nội tiếp.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c9-l28', title: 'Bài 28. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c9-l29', title: 'Bài 29. Tứ giác nội tiếp.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c9-l30', title: 'Bài 30. Đa giác đều.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm9-c10',
             title: 'Chương X. MỘT SỐ HÌNH KHỐI TRONG THỰC TIỄN.',
             lessons: [
-                { id: 'm9-c10-l31', title: 'Bài 31. Hình trụ và hình nón.', type: 'text' },
-                { id: 'm9-c10-l32', title: 'Bài 32. Hình cầu.', type: 'text' },
+                { id: 'm9-c10-l31', title: 'Bài 31. Hình trụ và hình nón.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm9-c10-l32', title: 'Bài 32. Hình cầu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
     ]
@@ -327,99 +326,99 @@ const MATH_8_COURSE_DATA: Course = {
             id: 'm8-c1',
             title: 'Chương I. ĐA THỨC.',
             lessons: [
-                { id: 'm8-c1-l1', title: 'Bài 1. Đơn thức.', type: 'text' },
-                { id: 'm8-c1-l2', title: 'Bài 2. Đa thức.', type: 'text' },
-                { id: 'm8-c1-l3', title: 'Bài 3. Phép cộng và phép trừ đa thức.', type: 'text' },
-                { id: 'm8-c1-l4', title: 'Bài 4. Phép nhân đa thức.', type: 'text' },
-                { id: 'm8-c1-l5', title: 'Bài 5. Phép chia đa thức cho đơn thức.', type: 'text' },
+                { id: 'm8-c1-l1', title: 'Bài 1. Đơn thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c1-l2', title: 'Bài 2. Đa thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c1-l3', title: 'Bài 3. Phép cộng và phép trừ đa thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c1-l4', title: 'Bài 4. Phép nhân đa thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c1-l5', title: 'Bài 5. Phép chia đa thức cho đơn thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c2',
             title: 'Chương II. HẰNG ĐẲNG THỨC ĐÁNG NHỚ VÀ ỨNG DỤNG.',
             lessons: [
-                { id: 'm8-c2-l6', title: 'Bài 6. Hiệu hai bình phương. Bình phương của một tổng hay một hiệu.', type: 'text' },
-                { id: 'm8-c2-l7', title: 'Bài 7. Lập phương của một tổng hay một hiệu.', type: 'text' },
-                { id: 'm8-c2-l8', title: 'Bài 8. Tổng và hiệu hai lập hương.', type: 'text' },
-                { id: 'm8-c2-l9', title: 'Bài 9. Phân tích đa thức thành nhân tử.', type: 'text' },
+                { id: 'm8-c2-l6', title: 'Bài 6. Hiệu hai bình phương. Bình phương của một tổng hay một hiệu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c2-l7', title: 'Bài 7. Lập phương của một tổng hay một hiệu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c2-l8', title: 'Bài 8. Tổng và hiệu hai lập hương.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c2-l9', title: 'Bài 9. Phân tích đa thức thành nhân tử.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c3',
             title: 'Chương III. TỨ GIÁC.',
             lessons: [
-                { id: 'm8-c3-l10', title: 'Bài 10. Tứ giác.', type: 'text' },
-                { id: 'm8-c3-l11', title: 'Bài 11. Hình thang cân.', type: 'text' },
-                { id: 'm8-c3-l12', title: 'Bài 12. Hình bình hành.', type: 'text' },
-                { id: 'm8-c3-l13', title: 'Bài 13. Hình chữ nhật.', type: 'text' },
-                { id: 'm8-c3-l14', title: 'Bài 14. Hình thoi và hình vuông.', type: 'text' },
+                { id: 'm8-c3-l10', title: 'Bài 10. Tứ giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c3-l11', title: 'Bài 11. Hình thang cân.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c3-l12', title: 'Bài 12. Hình bình hành.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c3-l13', title: 'Bài 13. Hình chữ nhật.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c3-l14', title: 'Bài 14. Hình thoi và hình vuông.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c4',
             title: 'CHƯƠNG IV. ĐỊNH LÍ THALES.',
             lessons: [
-                { id: 'm8-c4-l15', title: 'Bài 15. Định lí Thalès trong tam giác.', type: 'text' },
-                { id: 'm8-c4-l16', title: 'Bài 16. Đường trung bình của tam giác.', type: 'text' },
-                { id: 'm8-c4-l17', title: 'Bài 17. Tính chất đường phân giác của tam giác.', type: 'text' },
+                { id: 'm8-c4-l15', title: 'Bài 15. Định lí Thalès trong tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c4-l16', title: 'Bài 16. Đường trung bình của tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c4-l17', title: 'Bài 17. Tính chất đường phân giác của tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c5',
             title: 'Chương V. DỮ LIỆU VÀ BIỂU ĐỒ.',
             lessons: [
-                { id: 'm8-c5-l18', title: 'Bài 18. Thu thập và phân loại dữ liệu.', type: 'text' },
-                { id: 'm8-c5-l19', title: 'Bài 19. Biểu diễn dữ liệu bằng bảng, biểu đồ.', type: 'text' },
-                { id: 'm8-c5-l20', title: 'Bài 20. Phân tích số liệu thống kê dựa vào biểu đó.', type: 'text' },
+                { id: 'm8-c5-l18', title: 'Bài 18. Thu thập và phân loại dữ liệu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c5-l19', title: 'Bài 19. Biểu diễn dữ liệu bằng bảng, biểu đồ.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c5-l20', title: 'Bài 20. Phân tích số liệu thống kê dựa vào biểu đó.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c6',
             title: 'Chương VI. PHÂN THỨC ĐẠI SỐ.',
             lessons: [
-                { id: 'm8-c6-l21', title: 'Bài 21. Phần thức đại số.', type: 'text' },
-                { id: 'm8-c6-l22', title: 'Bài 22. Tính chất cơ bản của phân thức đại số.', type: 'text' },
-                { id: 'm8-c6-l23', title: 'Bài 23. Phép cộng và phép trừ phân thức đại số.', type: 'text' },
-                { id: 'm8-c6-l24', title: 'Bài 24. Phép nhân và phép chia phân thức đại số.', type: 'text' },
+                { id: 'm8-c6-l21', title: 'Bài 21. Phần thức đại số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c6-l22', title: 'Bài 22. Tính chất cơ bản của phân thức đại số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c6-l23', title: 'Bài 23. Phép cộng và phép trừ phân thức đại số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c6-l24', title: 'Bài 24. Phép nhân và phép chia phân thức đại số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c7',
             title: 'Chương VII. PHƯƠNG TRÌNH BẬC NHẤT VÀ HÀM SỐ BẬC NHẤT.',
             lessons: [
-                { id: 'm8-c7-l25', title: 'Bài 25. Phương trình bậc nhất một ẩn.', type: 'text' },
-                { id: 'm8-c7-l26', title: 'Bài 26. Giải bài toán bằng cách lập phương trình.', type: 'text' },
-                { id: 'm8-c7-l27', title: 'Bài 27. Khái niệm hàm số và đô thị của hàm số.', type: 'text' },
-                { id: 'm8-c7-l28', title: 'Bài 28. Hàm số bậc nhất và đô thị của hàm số bậc nhất.', type: 'text' },
-                { id: 'm8-c7-l29', title: 'Bài 29. Hệ số góc của đường thẳng.', type: 'text' },
+                { id: 'm8-c7-l25', title: 'Bài 25. Phương trình bậc nhất một ẩn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c7-l26', title: 'Bài 26. Giải bài toán bằng cách lập phương trình.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c7-l27', title: 'Bài 27. Khái niệm hàm số và đô thị của hàm số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c7-l28', title: 'Bài 28. Hàm số bậc nhất và đô thị của hàm số bậc nhất.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c7-l29', title: 'Bài 29. Hệ số góc của đường thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c8',
             title: 'Chương VIII. MỞ ĐẦU VỀ TÍNH XÁC SUẤT CỦA BIẾN CỐ.',
             lessons: [
-                { id: 'm8-c8-l30', title: 'Bài 30. Kết quả có thể và kết quả thuận lợi.', type: 'text' },
-                { id: 'm8-c8-l31', title: 'Bài 31. Cách tính xác suất của biến cố bằng tỉ số.', type: 'text' },
-                { id: 'm8-c8-l32', title: 'Bài 32. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng.', type: 'text' },
+                { id: 'm8-c8-l30', title: 'Bài 30. Kết quả có thể và kết quả thuận lợi.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c8-l31', title: 'Bài 31. Cách tính xác suất của biến cố bằng tỉ số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c8-l32', title: 'Bài 32. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c9',
             title: 'Chương IX. TAM GIÁC ĐỒNG DẠNG.',
             lessons: [
-                { id: 'm8-c9-l33', title: 'Bài 33. Hai tam giác đồng dạng.', type: 'text' },
-                { id: 'm8-c9-l34', title: 'Bài 34. Ba trường hợp đồng dạng của hai tam giác.', type: 'text' },
-                { id: 'm8-c9-l35', title: 'Bài 35. Định lí Pythagore và ứng dụng.', type: 'text' },
-                { id: 'm8-c9-l36', title: 'Bài 36. Các trường hợp đồng dạng của hai tam giác vuông.', type: 'text' },
-                { id: 'm8-c9-l37', title: 'Bài 37. Hình đồng dạng.', type: 'text' },
+                { id: 'm8-c9-l33', title: 'Bài 33. Hai tam giác đồng dạng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c9-l34', title: 'Bài 34. Ba trường hợp đồng dạng của hai tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c9-l35', title: 'Bài 35. Định lí Pythagore và ứng dụng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c9-l36', title: 'Bài 36. Các trường hợp đồng dạng của hai tam giác vuông.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c9-l37', title: 'Bài 37. Hình đồng dạng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm8-c10',
             title: 'Chương X. MỘT SỐ HÌNH KHỐI TRONG THỰC TIỄN.',
             lessons: [
-                { id: 'm8-c10-l38', title: 'Bài 38. Hình chóp tam giác đều.', type: 'text' },
-                { id: 'm8-c10-l39', title: 'Bài 39. Hình chóp tứ giác đều.', type: 'text' },
+                { id: 'm8-c10-l38', title: 'Bài 38. Hình chóp tam giác đều.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm8-c10-l39', title: 'Bài 39. Hình chóp tứ giác đều.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
     ]
@@ -435,98 +434,98 @@ const MATH_7_COURSE_DATA: Course = {
             id: 'm7-c1',
             title: 'Chương I. SỐ HỮU TỈ.',
             lessons: [
-                { id: 'm7-c1-l1', title: 'Bài 1. Tập hợp các số hữu tỉ.', type: 'text' },
-                { id: 'm7-c1-l2', title: 'Bài 2. Cộng, trừ, nhân, chia số hữu tỉ.', type: 'text' },
-                { id: 'm7-c1-l3', title: 'Bài 3. Luỹ thừa với số mũ tự nhiên của một số hữu tỉ.', type: 'text' },
-                { id: 'm7-c1-l4', title: 'Bài 4. Thứ tự thực hiện các phép tính. Quy tắc chuyển vế.', type: 'text' },
+                { id: 'm7-c1-l1', title: 'Bài 1. Tập hợp các số hữu tỉ.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c1-l2', title: 'Bài 2. Cộng, trừ, nhân, chia số hữu tỉ.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c1-l3', title: 'Bài 3. Luỹ thừa với số mũ tự nhiên của một số hữu tỉ.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c1-l4', title: 'Bài 4. Thứ tự thực hiện các phép tính. Quy tắc chuyển vế.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c2',
             title: 'Chương II. SỐ THỰC.',
             lessons: [
-                { id: 'm7-c2-l5', title: 'Bài 5. Làm quen với số thập phân vô hạn tuần hoàn.', type: 'text' },
-                { id: 'm7-c2-l6', title: 'Bài 6. Số vô tỉ. Căn bậc hai số học.', type: 'text' },
-                { id: 'm7-c2-l7', title: 'Bài 7. Tập hợp các số thực.', type: 'text' },
+                { id: 'm7-c2-l5', title: 'Bài 5. Làm quen với số thập phân vô hạn tuần hoàn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c2-l6', title: 'Bài 6. Số vô tỉ. Căn bậc hai số học.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c2-l7', title: 'Bài 7. Tập hợp các số thực.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c3',
             title: 'Chương III. GÓC VÀ ĐƯỜNG THẲNG SONG SONG.',
             lessons: [
-                { id: 'm7-c3-l8', title: 'Bài 8. Góc ở vị trí đặc biệt. Tia phân giác của một góc.', type: 'text' },
-                { id: 'm7-c3-l9', title: 'Bài 9. Hai đường thẳng song song và dấu hiệu nhận biết.', type: 'text' },
-                { id: 'm7-c3-l10', title: 'Bài 10. Tiên đề Euclid. Tính chất của hai đường thẳng song song.', type: 'text' },
-                { id: 'm7-c3-l11', title: 'Bài 11. Định lí và chứng minh định lí.', type: 'text' },
+                { id: 'm7-c3-l8', title: 'Bài 8. Góc ở vị trí đặc biệt. Tia phân giác của một góc.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c3-l9', title: 'Bài 9. Hai đường thẳng song song và dấu hiệu nhận biết.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c3-l10', title: 'Bài 10. Tiên đề Euclid. Tính chất của hai đường thẳng song song.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c3-l11', title: 'Bài 11. Định lí và chứng minh định lí.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c4',
             title: 'Chương IV. TAM GIÁC BẰNG NHAU.',
             lessons: [
-                { id: 'm7-c4-l12', title: 'Bài 12. Tổng các góc trong một tam giác.', type: 'text' },
-                { id: 'm7-c4-l13', title: 'Bài 13. Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất của tam giác.', type: 'text' },
-                { id: 'm7-c4-l14', title: 'Bài 14. Trường hợp bằng nhau thứ hai và thứ ba của tam giác.', type: 'text' },
-                { id: 'm7-c4-l15', title: 'Bài 15. Các trường hợp bằng nhau của tam giác vuông.', type: 'text' },
-                { id: 'm7-c4-l16', title: 'Bài 16. Tam giác cân. Đường trung trực của đoạn thẳng.', type: 'text' },
+                { id: 'm7-c4-l12', title: 'Bài 12. Tổng các góc trong một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c4-l13', title: 'Bài 13. Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất của tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c4-l14', title: 'Bài 14. Trường hợp bằng nhau thứ hai và thứ ba của tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c4-l15', title: 'Bài 15. Các trường hợp bằng nhau của tam giác vuông.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c4-l16', title: 'Bài 16. Tam giác cân. Đường trung trực của đoạn thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c5',
             title: 'Chương V. THU THẬP VÀ BIỂU DIỄN DỮ LIỆU.',
             lessons: [
-                { id: 'm7-c5-l17', title: 'Bài 17. Thu thập và phân loại dữ liệu.', type: 'text' },
-                { id: 'm7-c5-l18', title: 'Bài 18. Biểu đồ hình quạt tròn.', type: 'text' },
-                { id: 'm7-c5-l19', title: 'Bài 19. Biểu đồ đoạn thẳng.', type: 'text' },
+                { id: 'm7-c5-l17', title: 'Bài 17. Thu thập và phân loại dữ liệu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c5-l18', title: 'Bài 18. Biểu đồ hình quạt tròn.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c5-l19', title: 'Bài 19. Biểu đồ đoạn thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c6',
             title: 'Chương VI. TỈ LỆ THỨC VÀ ĐẠI LƯỢNG TỈ LỆ.',
             lessons: [
-                { id: 'm7-c6-l20', title: 'Bài 20. Tỉ lệ thức.', type: 'text' },
-                { id: 'm7-c6-l21', title: 'Bài 21. Tính chất của dãy tỉ số bằng nhau.', type: 'text' },
-                { id: 'm7-c6-l22', title: 'Bài 22. Đại lượng tỉ lệ thuận.', type: 'text' },
-                { id: 'm7-c6-l23', title: 'Bài 23. Đại lượng tỉ lệ nghịch.', type: 'text' },
+                { id: 'm7-c6-l20', title: 'Bài 20. Tỉ lệ thức.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c6-l21', title: 'Bài 21. Tính chất của dãy tỉ số bằng nhau.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c6-l22', title: 'Bài 22. Đại lượng tỉ lệ thuận.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c6-l23', title: 'Bài 23. Đại lượng tỉ lệ nghịch.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c7',
             title: 'Chương VII. BIỂU THỨC ĐẠI SỐ VÀ ĐA THỨC MỘT BIẾN.',
             lessons: [
-                { id: 'm7-c7-l24', title: 'Bài 24. Biểu thức đại số.', type: 'text' },
-                { id: 'm7-c7-l25', title: 'Bài 25. Đa thức một biến.', type: 'text' },
-                { id: 'm7-c7-l26', title: 'Bài 26. Phép cộng và phép trừ đa thức một biến.', type: 'text' },
-                { id: 'm7-c7-l27', title: 'Bài 27. Phép nhân đa thức một biến.', type: 'text' },
-                { id: 'm7-c7-l28', title: 'Bài 28. Phép chia đa thức một biến.', type: 'text' },
+                { id: 'm7-c7-l24', title: 'Bài 24. Biểu thức đại số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c7-l25', title: 'Bài 25. Đa thức một biến.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c7-l26', title: 'Bài 26. Phép cộng và phép trừ đa thức một biến.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c7-l27', title: 'Bài 27. Phép nhân đa thức một biến.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c7-l28', title: 'Bài 28. Phép chia đa thức một biến.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c8',
             title: 'Chương VIII. LÀM QUEN VỚI BIẾN CỐ VÀ XÁC SUẤT CỦA BIẾN CỐ.',
             lessons: [
-                { id: 'm7-c8-l29', title: 'Bài 29. Làm quen với biến cố.', type: 'text' },
-                { id: 'm7-c8-l30', title: 'Bài 30. Làm quen với xác suất của biến cố.', type: 'text' },
+                { id: 'm7-c8-l29', title: 'Bài 29. Làm quen với biến cố.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c8-l30', title: 'Bài 30. Làm quen với xác suất của biến cố.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c9',
             title: 'Chương IX. QUAN HỆ GIỮA CÁC YẾU TỐ TRONG MỘT TAM GIÁC.',
             lessons: [
-                { id: 'm7-c9-l31', title: 'Bài 31. Quan hệ giữa góc và cạnh đối diện trong một tam giác.', type: 'text' },
-                { id: 'm7-c9-l32', title: 'Bài 32. Quan hệ giữa đường vuông góc và đường xiên.', type: 'text' },
-                { id: 'm7-c9-l33', title: 'Bài 33. Quan hệ giữa ba cạnh của một tam giác.', type: 'text' },
-                { id: 'm7-c9-l34', title: 'Bài 34. Sự đồng quy của ba trung tuyến, ba đường phân giác trong một tam giác.', type: 'text' },
-                { id: 'm7-c9-l35', title: 'Bài 35. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác.', type: 'text' },
+                { id: 'm7-c9-l31', title: 'Bài 31. Quan hệ giữa góc và cạnh đối diện trong một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c9-l32', title: 'Bài 32. Quan hệ giữa đường vuông góc và đường xiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c9-l33', title: 'Bài 33. Quan hệ giữa ba cạnh của một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c9-l34', title: 'Bài 34. Sự đồng quy của ba trung tuyến, ba đường phân giác trong một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c9-l35', title: 'Bài 35. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm7-c10',
             title: 'Chương X. MỘT SỐ HÌNH KHỐI TRONG THỰC TIỄN.',
             lessons: [
-                { id: 'm7-c10-l36', title: 'Bài 36. Hình hộp chữ nhật và hình lập phương.', type: 'text' },
-                { id: 'm7-c10-l37', title: 'Luyện tập.', type: 'text' },
-                { id: 'm7-c10-l38', title: 'Bài 37. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác.', type: 'text' },
+                { id: 'm7-c10-l36', title: 'Bài 36. Hình hộp chữ nhật và hình lập phương.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c10-l37', title: 'Luyện tập.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm7-c10-l38', title: 'Bài 37. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
     ]
@@ -542,97 +541,97 @@ const MATH_6_COURSE_DATA: Course = {
             id: 'm6-c1',
             title: 'CHƯƠNG I. TẬP HỢP CÁC SỐ TỰ NHIÊN.',
             lessons: [
-                { id: 'm6-c1-l1', title: 'Bài 1. Tập hợp.', type: 'text' },
-                { id: 'm6-c1-l2', title: 'Bài 2. Cách ghi số tự nhiên.', type: 'text' },
-                { id: 'm6-c1-l3', title: 'Bài 3. Thứ tự trong tập hợp các số tự nhiên.', type: 'text' },
-                { id: 'm6-c1-l4', title: 'Bài 4. Phép cộng và phép trừ số tự nhiên.', type: 'text' },
-                { id: 'm6-c1-l5', title: 'Bài 5. Phép nhân và phép chia số tự nhiên.', type: 'text' },
-                { id: 'm6-c1-l6', title: 'Bài 6. Luỹ thừa với số mũ tự nhiên.', type: 'text' },
-                { id: 'm6-c1-l7', title: 'Bài 7. Thứ tự thực hiện các phép tính.', type: 'text' },
+                { id: 'm6-c1-l1', title: 'Bài 1. Tập hợp.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l2', title: 'Bài 2. Cách ghi số tự nhiên.', type: 'video', videoUrl: 'https://vcos.cloudstorage.com.vn/1-bucket-1111/Gi%E1%BA%A3i_M%C3%A3_Nh%E1%BB%AFng_Con_S%E1%BB%91.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=atm305057-s3user%2F20251204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251204T170458Z&X-Amz-Expires=600&X-Amz-Signature=87fb97b1aa7bff063f098594eef322d9fc1d0a4168a8c5caf25aaeaa827609e0&X-Amz-SignedHeaders=host' },
+                { id: 'm6-c1-l3', title: 'Bài 3. Thứ tự trong tập hợp các số tự nhiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l4', title: 'Bài 4. Phép cộng và phép trừ số tự nhiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l5', title: 'Bài 5. Phép nhân và phép chia số tự nhiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l6', title: 'Bài 6. Luỹ thừa với số mũ tự nhiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l7', title: 'Bài 7. Thứ tự thực hiện các phép tính.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c2',
             title: 'CHƯƠNG II. TÍNH CHIA HẾT TRONG TẬP HỢP CÁC SỐ TỰ NHIÊN.',
             lessons: [
-                { id: 'm6-c2-l8', title: 'Bài 8. Quan hệ chia hết và tính chất.', type: 'text' },
-                { id: 'm6-c2-l9', title: 'Bài 9. Dấu hiệu chia hết.', type: 'text' },
-                { id: 'm6-c2-l10', title: 'Bài 10. Số nguyên tố.', type: 'text' },
-                { id: 'm6-c2-l11', title: 'Bài 11. Ước chung. Ước chung lớn nhất.', type: 'text' },
-                { id: 'm6-c2-l12', title: 'Bài 12. Bội chung. Bội chung nhỏ nhất.', type: 'text' },
+                { id: 'm6-c2-l8', title: 'Bài 8. Quan hệ chia hết và tính chất.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c2-l9', title: 'Bài 9. Dấu hiệu chia hết.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c2-l10', title: 'Bài 10. Số nguyên tố.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c2-l11', title: 'Bài 11. Ước chung. Ước chung lớn nhất.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c2-l12', title: 'Bài 12. Bội chung. Bội chung nhỏ nhất.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c3',
             title: 'CHƯƠNG III. SỐ NGUYÊN.',
             lessons: [
-                 { id: 'm6-c3-l13', title: 'Bài 13. Tập hợp các số nguyên.', type: 'text' },
-                 { id: 'm6-c3-l14', title: 'Bài 14. Phép cộng và phép trừ số nguyên.', type: 'text' },
-                 { id: 'm6-c3-l15', title: 'Bài 15. Quy tắc dấu ngoặc.', type: 'text' },
-                 { id: 'm6-c3-l16', title: 'Bài 16. Phép nhân số nguyên.', type: 'text' },
-                 { id: 'm6-c3-l17', title: 'Bài 17. Phép chia hết. Ước và bội của một số nguyên.', type: 'text' },
+                 { id: 'm6-c3-l13', title: 'Bài 13. Tập hợp các số nguyên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                 { id: 'm6-c3-l14', title: 'Bài 14. Phép cộng và phép trừ số nguyên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                 { id: 'm6-c3-l15', title: 'Bài 15. Quy tắc dấu ngoặc.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                 { id: 'm6-c3-l16', title: 'Bài 16. Phép nhân số nguyên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                 { id: 'm6-c3-l17', title: 'Bài 17. Phép chia hết. Ước và bội của một số nguyên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c4',
             title: 'CHƯƠNG IV. MỘT SỐ HÌNH PHẲNG TRONG THỰC TIỄN.',
             lessons: [
-                { id: 'm6-c4-l18', title: 'Bài 18. Hình tam giác đều. Hình vuông. Hình lục giác đều.', type: 'text' },
-                { id: 'm6-c4-l19', title: 'Bài 19. Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân.', type: 'text' },
-                { id: 'm6-c4-l20', title: 'Bài 20. Chu vi và diện tích của một số tứ giác đã học.', type: 'text' },
+                { id: 'm6-c4-l18', title: 'Bài 18. Hình tam giác đều. Hình vuông. Hình lục giác đều.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c4-l19', title: 'Bài 19. Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c4-l20', title: 'Bài 20. Chu vi và diện tích của một số tứ giác đã học.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c5',
             title: 'CHƯƠNG V. TÍNH ĐỐI XỨNG CỦA HÌNH PHẲNG TRONG TỰ NHIÊN.',
             lessons: [
-                { id: 'm6-c5-l21', title: 'Bài 21. Hình có trục đối xứng.', type: 'text' },
-                { id: 'm6-c5-l22', title: 'Bài 22. Hình có tâm đối xứng.', type: 'text' },
+                { id: 'm6-c5-l21', title: 'Bài 21. Hình có trục đối xứng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c5-l22', title: 'Bài 22. Hình có tâm đối xứng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c6',
             title: 'CHƯƠNG VI. PHÂN SỐ.',
             lessons: [
-                { id: 'm6-c6-l23', title: 'Bài 23. Mở rộng phân số. Phân số bằng nhau.', type: 'text' },
-                { id: 'm6-c6-l24', title: 'Bài 24. So sánh phân số. Hỗn số dương.', type: 'text' },
-                { id: 'm6-c6-l25', title: 'Bài 25. Phép cộng và phép trừ phân số.', type: 'text' },
-                { id: 'm6-c6-l26', title: 'Bài 26. Phép nhân và phép chia phân số.', type: 'text' },
-                { id: 'm6-c6-l27', title: 'Bài 27. Hai bài toán về phân số.', type: 'text' },
+                { id: 'm6-c6-l23', title: 'Bài 23. Mở rộng phân số. Phân số bằng nhau.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c6-l24', title: 'Bài 24. So sánh phân số. Hỗn số dương.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c6-l25', title: 'Bài 25. Phép cộng và phép trừ phân số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c6-l26', title: 'Bài 26. Phép nhân và phép chia phân số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c6-l27', title: 'Bài 27. Hai bài toán về phân số.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c7',
             title: 'CHƯƠNG VII. SỐ THẬP PHÂN.',
             lessons: [
-                { id: 'm6-c7-l28', title: 'Bài 28. Số thập phân.', type: 'text' },
-                { id: 'm6-c7-l29', title: 'Bài 29. Tính toán với số thập phân.', type: 'text' },
-                { id: 'm6-c7-l30', title: 'Bài 30. Làm tròn và ước lượng.', type: 'text' },
-                { id: 'm6-c7-l31', title: 'Bài 31. Một số bài toán về tỉ số và tỉ số phần trăm.', type: 'text' },
+                { id: 'm6-c7-l28', title: 'Bài 28. Số thập phân.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c7-l29', title: 'Bài 29. Tính toán với số thập phân.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c7-l30', title: 'Bài 30. Làm tròn và ước lượng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c7-l31', title: 'Bài 31. Một số bài toán về tỉ số và tỉ số phần trăm.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c8',
             title: 'CHƯƠNG VIII. NHỮNG HÌNH HÌNH HỌC CƠ BẢN.',
             lessons: [
-                { id: 'm6-c8-l32', title: 'Bài 32. Điểm và đường thẳng.', type: 'text' },
-                { id: 'm6-c8-l33', title: 'Bài 33. Điểm nằm giữa hai điểm. Tia.', type: 'text' },
-                { id: 'm6-c8-l34', title: 'Bài 34. Đoạn thẳng. Độ dài đoạn thẳng.', type: 'text' },
-                { id: 'm6-c8-l35', title: 'Bài 35. Trung điểm của đoạn thẳng.', type: 'text' },
-                { id: 'm6-c8-l36', title: 'Bài 36. Góc.', type: 'text' },
-                { id: 'm6-c8-l37', title: 'Bài 37. Số đo góc.', type: 'text' },
+                { id: 'm6-c8-l32', title: 'Bài 32. Điểm và đường thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c8-l33', title: 'Bài 33. Điểm nằm giữa hai điểm. Tia.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c8-l34', title: 'Bài 34. Đoạn thẳng. Độ dài đoạn thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c8-l35', title: 'Bài 35. Trung điểm của đoạn thẳng.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c8-l36', title: 'Bài 36. Góc.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c8-l37', title: 'Bài 37. Số đo góc.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
         {
             id: 'm6-c9',
             title: 'CHƯƠNG IX. DỮ LIỆU VÀ XÁC SUẤT THỰC NGHIỆM.',
             lessons: [
-                { id: 'm6-c9-l38', title: 'Bài 38. Dữ liệu và thu thập dữ liệu.', type: 'text' },
-                { id: 'm6-c9-l39', title: 'Bài 39. Bảng thống kê và biểu đồ tranh.', type: 'text' },
-                { id: 'm6-c9-l40', title: 'Bài 40. Biểu đồ cột.', type: 'text' },
-                { id: 'm6-c9-l41', title: 'Bài 41. Biểu đồ cột kép.', type: 'text' },
-                { id: 'm6-c9-l42', title: 'Bài 42. Kết quả có thể và sự kiện trong trò chơi, thí nghiệm.', type: 'text' },
-                { id: 'm6-c9-l43', title: 'Bài 43. Xác suất thực nghiệm.', type: 'text' },
+                { id: 'm6-c9-l38', title: 'Bài 38. Dữ liệu và thu thập dữ liệu.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c9-l39', title: 'Bài 39. Bảng thống kê và biểu đồ tranh.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c9-l40', title: 'Bài 40. Biểu đồ cột.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c9-l41', title: 'Bài 41. Biểu đồ cột kép.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c9-l42', title: 'Bài 42. Kết quả có thể và sự kiện trong trò chơi, thí nghiệm.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c9-l43', title: 'Bài 43. Xác suất thực nghiệm.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
             ]
         },
     ]

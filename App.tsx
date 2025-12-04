@@ -1,5 +1,4 @@
 
-
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import type { Subject, Module, Course, Grade, ChatMessage, PhetSimulation, LabCategory, TestSubject, TestGrade, SelfPracticeSubject, PracticeLesson, Quiz, MockExamSubject, LectureSubject, TestType } from './types';
 import AITutorView from './components/AITutorView';
@@ -219,14 +218,9 @@ const AppContent: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAboutModalOpen, setIsAboutModalOpen] = useState(false);
 
-  // Redirect if user is already logged in or handle password recovery
+  // 1. Listen for Password Recovery Event (Run once on mount)
   useEffect(() => {
-    if (!isLoading) {
-      if (user && (currentView === 'login' || currentView === 'update-password')) {
-        setCurrentView('home');
-      }
-    }
-     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'PASSWORD_RECOVERY') {
         setCurrentView('update-password');
       }
@@ -235,6 +229,23 @@ const AppContent: React.FC = () => {
     return () => {
       subscription.unsubscribe();
     };
+  }, []);
+
+  // 2. Redirect logic (Run when auth state or view changes)
+  useEffect(() => {
+    if (isLoading) return;
+
+    // Check URL hash for recovery flow BEFORE redirecting
+    // Supabase sends a hash like #access_token=...&type=recovery
+    const isRecovery = window.location.hash.includes('type=recovery');
+
+    // Only redirect to home if:
+    // 1. User is logged in
+    // 2. User is currently on the login page
+    // 3. It is NOT a password recovery flow
+    if (user && currentView === 'login' && !isRecovery) {
+      setCurrentView('home');
+    }
   }, [user, isLoading, currentView]);
 
 
@@ -421,7 +432,8 @@ const AppContent: React.FC = () => {
       case 'login':
         return <LoginView onLoginSuccess={() => setCurrentView('home')} />;
       case 'update-password':
-        return <UpdatePasswordView onPasswordUpdated={() => setCurrentView('login')} />;
+        // Redirect to home after password update for better UX
+        return <UpdatePasswordView onPasswordUpdated={() => setCurrentView('home')} />;
       case 'personalized-dashboard':
         return <PersonalizedDashboard onStartLesson={() => setCurrentView('self-study')} />;
       case 'self-study':
