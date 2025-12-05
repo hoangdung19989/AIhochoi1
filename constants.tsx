@@ -541,7 +541,7 @@ const MATH_6_COURSE_DATA: Course = {
             id: 'm6-c1',
             title: 'CHƯƠNG I. TẬP HỢP CÁC SỐ TỰ NHIÊN.',
             lessons: [
-                { id: 'm6-c1-l1', title: 'Bài 1. Tập hợp.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
+                { id: 'm6-c1-l1', title: 'Bài 1. Tập hợp.', type: 'video', videoUrl: 'https://youtu.be/Ho4OUW9QkpM?si=98JkcOiqoMOwmVel' },
                 { id: 'm6-c1-l2', title: 'Bài 2. Cách ghi số tự nhiên.', type: 'video', videoUrl: 'https://vcos.cloudstorage.com.vn/1-bucket-1111/Gi%E1%BA%A3i_M%C3%A3_Nh%E1%BB%AFng_Con_S%E1%BB%91.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=atm305057-s3user%2F20251204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251204T170955Z&X-Amz-Expires=600&X-Amz-Signature=db27a6fd9c37fd2f522cc6edcc91f2fb0c4a6f3cc9f51cc4241e38da10a3eec4&X-Amz-SignedHeaders=host' },
                 { id: 'm6-c1-l3', title: 'Bài 3. Thứ tự trong tập hợp các số tự nhiên.', type: 'video', videoUrl: 'https://vcos.cloudstorage.com.vn/1-bucket-1111/Th%E1%BB%A9_T%E1%BB%B1_C%C3%A1c_S%E1%BB%91_T%E1%BB%B1_Nhi%C3%AAn.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=atm305057-s3user%2F20251204%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20251204T170908Z&X-Amz-Expires=600&X-Amz-Signature=c9638476fc5d079a823a6a4188c8ca4314417e65e28b1c39702fa0ecabd824c0&X-Amz-SignedHeaders=host' },
                 { id: 'm6-c1-l4', title: 'Bài 4. Phép cộng và phép trừ số tự nhiên.', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=example' },
