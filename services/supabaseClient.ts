@@ -1,6 +1,7 @@
 
+
 import { createClient } from '@supabase/supabase-js';
-import { API_KEYS } from '../constants';
+import { API_KEYS } from '../components/constants';
 
 // Robustly retrieve Supabase credentials
 // 1. Prioritize keys from constants.tsx for Studio environment

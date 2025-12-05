@@ -1,6 +1,7 @@
 
+
 import React from 'react';
-import { LECTURE_SUBJECTS } from '../constants';
+import { LECTURE_SUBJECTS } from './constants';
 import { HomeIcon, ChevronRightIcon } from './icons';
 import type { LectureSubject } from '../types';
 

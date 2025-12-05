@@ -1,10 +1,12 @@
 
 
+
+
 import React, { useState, useEffect } from 'react';
 import type { SelfPracticeSubject, TestGrade, PracticeLesson, Quiz } from '../types';
 import { HomeIcon, ChevronRightIcon, CheckCircleIcon, XCircleIcon, ClockIcon } from './icons';
 import { playAudioFromBase64 } from '../utils/audio';
-import { CORRECT_ANSWER_SOUND, INCORRECT_ANSWER_SOUND } from '../constants';
+import { CORRECT_ANSWER_SOUND, INCORRECT_ANSWER_SOUND } from './constants';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../services/supabaseClient';
 
@@ -287,7 +289,7 @@ const PracticeView: React.FC<PracticeViewProps> = ({
                         onClick={handleNextQuestion}
                         className={`ml-6 px-6 py-3 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 ${isCorrect ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`}
                     >
-                       {currentQuestionIndex === (quizData?.questions.length || 0) - 1 ? 'Hoàn thành' : 'Câu tiếp theo'}
+                       {currentQuestionIndex === (quizData?.questions.length || 0) - 1 ? 'Xem kết quả' : 'Câu tiếp theo'}
                     </button>
                 </div>
             </div>
@@ -295,25 +297,27 @@ const PracticeView: React.FC<PracticeViewProps> = ({
       );
   }
 
-  return (
-     <div className="container mx-auto max-w-4xl relative">
-      <div className="flex items-center text-sm text-slate-500 mb-4 flex-wrap">
-        <HomeIcon className="h-5 w-5 mr-2" />
-        <button onClick={onBackToSelfStudy} className="hover:underline">Tự học</button>
-        <ChevronRightIcon className="h-4 w-4 mx-1" />
-        <button onClick={onBackToSubjects} className="hover:underline">Tự luyện</button>
-        <ChevronRightIcon className="h-4 w-4 mx-1" />
-        <button onClick={onBack} className="hover:underline">{subject.name} - {grade.name}</button>
-        <ChevronRightIcon className="h-4 w-4 mx-1" />
-        <span className="font-semibold text-slate-700 truncate">{lesson.title}</span>
-      </div>
+    // FIX: Added main return statement to fix the 'void' return type error.
+    return (
+        <div className="container mx-auto max-w-4xl relative">
+            <div className="flex items-center text-sm text-slate-500 mb-4 flex-wrap">
+                <HomeIcon className="h-5 w-5 mr-2" />
+                <button onClick={onBackToSelfStudy} className="hover:underline">Tự học</button>
+                <ChevronRightIcon className="h-4 w-4 mx-1" />
+                <button onClick={onBackToSubjects} className="hover:underline">Tự luyện</button>
+                <ChevronRightIcon className="h-4 w-4 mx-1" />
+                <button onClick={onBack} className="hover:underline">{subject.name} - {grade.name}</button>
+                <ChevronRightIcon className="h-4 w-4 mx-1" />
+                <span className="font-semibold text-slate-700 truncate">{lesson.title}</span>
+            </div>
 
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 min-h-[60vh] flex flex-col justify-center">
-        {renderContent()}
-      </div>
-      {renderFeedback()}
-    </div>
-  );
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 min-h-[60vh] flex flex-col justify-center">
+                {renderContent()}
+            </div>
+            {renderFeedback()}
+        </div>
+    );
 };
 
+// FIX: Added default export to fix the import error in App.tsx.
 export default PracticeView;

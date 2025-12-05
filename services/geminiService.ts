@@ -1,7 +1,8 @@
 
+
 import { GoogleGenAI, Type } from "@google/genai";
 import type { Subject, Quiz, TestType, LearningPath } from '../types';
-import { API_KEYS } from '../constants';
+import { API_KEYS } from '../components/constants';
 
 // Robustly retrieve the API KEY
 // 1. Prioritize keys from constants.tsx for Studio environment

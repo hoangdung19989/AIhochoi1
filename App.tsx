@@ -1,4 +1,5 @@
 
+
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import type { Subject, Module, Course, Grade, ChatMessage, PhetSimulation, LabCategory, TestSubject, TestGrade, SelfPracticeSubject, PracticeLesson, Quiz, MockExamSubject, LectureSubject, TestType } from './types';
 import AITutorView from './components/AITutorView';
@@ -30,7 +31,7 @@ import UpdatePasswordView from './components/UpdatePasswordView'; // Import the 
 import PersonalizedDashboard from './components/PersonalizedDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext'; 
 import { supabase } from './services/supabaseClient'; // Import supabase client
-import { SUBJECTS, GRADES_BY_SUBJECT, ALL_COURSES, PHET_SIMULATIONS, LAB_CATEGORIES, TEST_SUBJECTS, MOCK_EXAM_SUBJECTS, TEST_GRADES, MOCK_EXAM_GRADES, PRACTICE_LESSONS_DATA, TEST_TYPES } from './constants';
+import { SUBJECTS, GRADES_BY_SUBJECT, ALL_COURSES, PHET_SIMULATIONS, LAB_CATEGORIES, TEST_SUBJECTS, MOCK_EXAM_SUBJECTS, TEST_GRADES, MOCK_EXAM_GRADES, PRACTICE_LESSONS_DATA, TEST_TYPES } from './components/constants';
 import { getGenericTutorResponse, generatePracticeExercises } from './services/geminiService';
 import { RobotIcon, PaperAirplaneIcon, XMarkIcon } from './components/icons';
 

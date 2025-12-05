@@ -179,3 +179,10 @@ export interface LearningPath {
     studentWeaknesses: string[]; // Danh sách các chủ đề yếu
     weeklyPlan: DailyTask[];
 }
+
+export interface LessonLookupInfo {
+  title: string;
+  courseId: string;
+  gradeName: string;
+  subjectName: string;
+}

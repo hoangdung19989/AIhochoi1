@@ -1,7 +1,7 @@
 
 import React from 'react';
 import type { SelfPracticeSubject } from '../types';
-import { SELF_PRACTICE_SUBJECTS } from '../constants';
+import { SELF_PRACTICE_SUBJECTS } from './constants';
 import { HomeIcon, ChevronRightIcon } from './icons';
 
 interface SelfPracticeSubjectSelectionProps {

@@ -18,7 +18,6 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
   const [stats, setStats] = useState({
       practiceCount: 0,
       avgTestScore: 0,
-      avgMockScore: 0
   });
   
   const [weaknesses, setWeaknesses] = useState<string[]>([]);
@@ -26,6 +25,7 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
   const [isLoadingPath, setIsLoadingPath] = useState(false);
   const [loadingData, setLoadingData] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const [allScoresAreZero, setAllScoresAreZero] = useState(false); // New state for zero score case
 
   useEffect(() => {
     if (user) {
@@ -36,6 +36,7 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
   const fetchUserData = async () => {
     setLoadingData(true);
     setFetchError(null);
+    setAllScoresAreZero(false); // Reset on each fetch
     try {
       // 1. Fetch Exam Results with Grade Filter
       const { data: results, error: resultsError } = await supabase
@@ -45,23 +46,20 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
 
       if (resultsError) throw resultsError;
 
-      // Filter locally for simplicity
-      // We check if grade_name contains the selected grade (e.g. "Toán Lớp 9" contains "9")
-      // OR if user has added a 'grade' column (recommended)
       const gradeResults = (results as ExamResult[]).filter(r => {
-          // Check explicit 'grade' column if available (dynamic check), otherwise fallback to name parsing
           const row: any = r;
-          // Prefer explicit column 'grade'
           if (row.grade && row.grade.toString().includes(selectedGrade)) return true;
-          // Fallback to 'grade_name' parsing
           if (row.grade_name && row.grade_name.toString().includes(selectedGrade)) return true;
           return false;
       });
 
       // Separate stats by exam_type
       const tests = gradeResults.filter(r => r.exam_type === 'test');
-      const mocks = gradeResults.filter(r => r.exam_type === 'mock');
       const practices = gradeResults.filter(r => r.exam_type === 'practice');
+
+      // Check for the "all zero score" condition
+      const allTestsAreZero = tests.length > 0 && tests.every(t => t.score === 0);
+      setAllScoresAreZero(allTestsAreZero);
 
       const calcAvg = (items: ExamResult[]) => {
           if (items.length === 0) return 0;
@@ -72,16 +70,15 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
       setStats({
         practiceCount: practices.length,
         avgTestScore: Number(calcAvg(tests)),
-        avgMockScore: Number(calcAvg(mocks))
       });
 
-      // 2. Analyze Weaknesses (Needs Grade Filter on question_attempts)
-      // Note: This requires 'grade' column in question_attempts
+      // 2. Analyze Weaknesses - EXCLUDE MOCK EXAMS
       let attemptsQuery = supabase
         .from('question_attempts')
         .select('question_topics, grade')
         .eq('user_id', user!.id)
-        .eq('is_correct', false);
+        .eq('is_correct', false)
+        .neq('exam_type', 'mock'); // <-- IMPORTANT: Exclude mock exams from weakness analysis
       
       const { data: attempts, error: attemptsError } = await attemptsQuery;
 
@@ -89,7 +86,6 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
 
       // Filter attempts by grade locally
       const gradeAttempts = attempts?.filter((row: any) => {
-          // Robust check for grade column
           return row.grade ? row.grade.toString().includes(selectedGrade) : true; 
       }) || [];
 
@@ -119,26 +115,10 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
       
       let msg = "Lỗi không xác định.";
       
-      if (typeof err === 'string') {
-          msg = err;
-      } else if (err instanceof Error) {
+      if (typeof err === 'object' && err !== null && 'message' in err) {
           msg = err.message;
-      } else if (typeof err === 'object' && err !== null) {
-          // Parse Supabase error object safely
-          if ('message' in err) {
-              msg = err.message;
-              if ('details' in err && err.details) msg += ` (${err.details})`;
-          } else {
-              // Fallback for unknown object structure
-              try {
-                  msg = JSON.stringify(err);
-              } catch (e) {
-                  msg = "Lỗi đối tượng không xác định (Unknown Error Object)";
-              }
-          }
       }
       
-      // Better message for missing columns
       if (msg.toLowerCase().includes("column") && msg.toLowerCase().includes("does not exist")) {
           msg = "Lỗi cơ sở dữ liệu: Thiếu cột dữ liệu (grade, exam_type). Vui lòng cập nhật bảng Supabase theo hướng dẫn trong README.";
       }
@@ -150,15 +130,17 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
   };
 
   const handleGeneratePath = async () => {
+    if (allScoresAreZero) {
+        alert("Tất cả bài kiểm tra của bạn đều đạt 0 điểm. Vui lòng làm lại bài để có dữ liệu phân tích chính xác hơn.");
+        return;
+    }
     if (weaknesses.length === 0) {
       alert("Bạn chưa có đủ dữ liệu để tạo lộ trình cho Khối lớp này. Hãy làm thử một bài kiểm tra trước!");
       return;
     }
     setIsLoadingPath(true);
     try {
-      // Pass the selected grade to AI so it generates appropriate content
       const path = await generatePersonalizedLearningPath(weaknesses, selectedGrade);
-      // Manually attach grade info if needed
       setLearningPath({ ...path, grade: selectedGrade });
     } catch (err) {
       console.error("Failed to generate path:", err);
@@ -188,7 +170,6 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
   return (
     <div className="container mx-auto max-w-6xl space-y-8">
       
-      {/* Grade Selector */}
       <div className="flex justify-end items-center space-x-3">
           <label className="text-sm font-semibold text-slate-600">Dữ liệu cho:</label>
           <select 
@@ -203,8 +184,7 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
           </select>
       </div>
 
-      {/* Header Stats - Separated */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center">
             <div className="p-4 bg-emerald-100 text-emerald-600 rounded-xl mr-4">
                 <PencilSquareIcon className="h-8 w-8" />
@@ -223,18 +203,8 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
                 <p className="text-2xl font-bold text-slate-800">{stats.avgTestScore} / 10</p>
             </div>
         </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex items-center">
-             <div className="p-4 bg-purple-100 text-purple-600 rounded-xl mr-4">
-                <AcademicCapIcon className="h-8 w-8" />
-            </div>
-            <div>
-                <p className="text-sm text-slate-500 font-medium">Điểm TB Thi thử</p>
-                <p className="text-2xl font-bold text-slate-800">{stats.avgMockScore} / 10</p>
-            </div>
-        </div>
       </div>
 
-      {/* Weakness Analysis & Path Generation */}
       <div className="bg-gradient-to-r from-brand-blue to-indigo-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row items-start justify-between">
             <div className="max-w-xl">
@@ -243,7 +213,7 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
                     AI đã phân tích các bài làm **Lớp {selectedGrade}** của bạn và phát hiện các chủ đề cần cải thiện.
                 </p>
                 
-                {weaknesses.length > 0 ? (
+                {weaknesses.length > 0 && !allScoresAreZero ? (
                     <div className="mb-8">
                         <p className="text-sm uppercase tracking-wide text-indigo-200 font-bold mb-3">Điểm yếu cần khắc phục:</p>
                         <div className="flex flex-wrap gap-3">
@@ -259,24 +229,31 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
                         Chưa có đủ dữ liệu điểm yếu cho Lớp {selectedGrade}. Hãy làm thêm bài tập nhé!
                     </p>
                 )}
-
-                <button 
-                    onClick={handleGeneratePath}
-                    disabled={isLoadingPath || weaknesses.length === 0}
-                    className="flex items-center px-8 py-4 bg-brand-yellow text-brand-blue-dark font-bold rounded-xl shadow-lg hover:bg-amber-400 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {isLoadingPath ? (
-                        <>
-                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brand-blue-dark mr-3"></div>
-                            Đang tạo lộ trình...
-                        </>
-                    ) : (
-                        <>
-                            <MapIcon className="h-6 w-6 mr-2" />
-                            Tạo Lộ trình 7 Ngày
-                        </>
-                    )}
-                </button>
+                
+                {allScoresAreZero ? (
+                    <div className="mt-8 p-4 bg-yellow-400/20 text-yellow-100 border border-yellow-300/50 rounded-lg">
+                        <p className="font-semibold">Cần thêm dữ liệu chính xác!</p>
+                        <p className="text-sm">Hệ thống nhận thấy tất cả bài kiểm tra của bạn đều đạt 0 điểm. Vui lòng làm lại ít nhất một bài để có dữ liệu phân tích tốt hơn trước khi tạo lộ trình.</p>
+                    </div>
+                ) : (
+                    <button 
+                        onClick={handleGeneratePath}
+                        disabled={isLoadingPath || weaknesses.length === 0}
+                        className="flex items-center px-8 py-4 bg-brand-yellow text-brand-blue-dark font-bold rounded-xl shadow-lg hover:bg-amber-400 transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        {isLoadingPath ? (
+                            <>
+                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-brand-blue-dark mr-3"></div>
+                                Đang tạo lộ trình...
+                            </>
+                        ) : (
+                            <>
+                                <MapIcon className="h-6 w-6 mr-2" />
+                                Tạo Lộ trình 7 Ngày
+                            </>
+                        )}
+                    </button>
+                )}
             </div>
             
             <div className="hidden md:block">
@@ -285,7 +262,6 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
         </div>
       </div>
 
-      {/* Learning Path Timeline */}
       {learningPath && Array.isArray(learningPath.weeklyPlan) && (
         <div className="space-y-6 animate-slide-in-bottom">
             <h3 className="text-2xl font-bold text-slate-800 border-l-4 border-brand-yellow pl-4">Kế hoạch Lớp {selectedGrade} tuần này</h3>
@@ -293,7 +269,6 @@ const PersonalizedDashboard: React.FC<PersonalizedDashboardProps> = ({ onStartLe
             <div className="relative border-l-2 border-slate-200 ml-4 md:ml-6 space-y-8 pb-4">
                 {learningPath.weeklyPlan.map((day, idx) => (
                     <div key={idx} className="relative pl-8 md:pl-10">
-                        {/* Dot */}
                         <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-brand-blue ring-4 ring-white"></div>
                         
                         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">

@@ -1,6 +1,7 @@
 
+
 import React from 'react';
-import { MODULES } from '../constants';
+import { MODULES } from './constants';
 import ModuleCard from './ModuleCard';
 import { HomeIcon, ChevronRightIcon } from './icons';
 import type { Module } from '../types';

@@ -1,11 +1,13 @@
 
 
+
+
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import type { TestSubject, TestGrade, Quiz, TestType } from '../types';
 import { generateQuiz } from '../services/geminiService';
 import { ArrowLeftIcon, HomeIcon, ChevronRightIcon, CheckCircleIcon, XCircleIcon, PencilSquareIcon, ClockIcon } from './icons';
 import { playAudioFromBase64 } from '../utils/audio';
-import { CORRECT_ANSWER_SOUND, INCORRECT_ANSWER_SOUND } from '../constants';
+import { CORRECT_ANSWER_SOUND, INCORRECT_ANSWER_SOUND } from './constants';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../services/supabaseClient';
 
